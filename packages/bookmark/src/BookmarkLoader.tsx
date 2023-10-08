@@ -34,7 +34,8 @@ export const BookmarkLoader: React.FC<{
     isBookmarkExpanded?: IsBookmarkExpanded;
     renderBookmarkItem?: RenderBookmarkItem;
     store: Store<StoreProps>;
-}> = ({ doc, isBookmarkExpanded, renderBookmarkItem, store }) => {
+    _setBookmarks(bookmark: PdfJs.Outline[]): void
+}> = ({ doc, isBookmarkExpanded, renderBookmarkItem, store, _setBookmarks }) => {
     const { l10n } = React.useContext(LocalizationContext);
     const { direction } = React.useContext(ThemeContext);
     const isRtl = direction === TextDirection.RightToLeft;
@@ -48,6 +49,7 @@ export const BookmarkLoader: React.FC<{
             isLoaded: false,
             items: [],
         });
+        _setBookmarks(bookmarks.items)
         doc.getOutline().then((outline) => {
             setBookmarks({
                 isLoaded: true,
