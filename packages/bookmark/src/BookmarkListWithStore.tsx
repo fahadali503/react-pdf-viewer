@@ -19,7 +19,8 @@ export const BookmarkListWithStore: React.FC<{
     isBookmarkExpanded: IsBookmarkExpanded;
     renderBookmarkItem?: RenderBookmarkItem;
     store: Store<StoreProps>;
-}> = ({ isBookmarkExpanded, renderBookmarkItem, store }) => {
+    _setBookmarks(bookmark: PdfJs.Outline[]): void
+}> = ({ isBookmarkExpanded, renderBookmarkItem, store, _setBookmarks }) => {
     const [currentDoc, setCurrentDoc] = React.useState(store.get('doc'));
 
     const handleDocumentChanged: StoreHandler<PdfJs.PdfDocument> = (doc: PdfJs.PdfDocument) => {
@@ -40,6 +41,7 @@ export const BookmarkListWithStore: React.FC<{
             isBookmarkExpanded={isBookmarkExpanded}
             renderBookmarkItem={renderBookmarkItem}
             store={store}
+            _setBookmarks={_setBookmarks}
         />
     ) : (
         <div className="rpv-bookmark__loader">
