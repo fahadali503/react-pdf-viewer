@@ -1,0 +1,11 @@
+.DS_Store
+.turbo
+demo/nextjs/.next
+node_modules
+samples/ignore
+package-lock.json
+packages/**/lib
+packages/**/node_modules
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
